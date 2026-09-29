@@ -1,9 +1,3 @@
 name = "littlepings"
+pages_build_output_dir = "./dist"
 compatibility_date = "2025-01-01"
-
-# Cloudflare Pages build settings (used by the dashboard & wrangler CLI)
-[build]
-command = "npm run build"
-
-[build.environment]
-NODE_VERSION = "20"
