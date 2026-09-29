@@ -1,16 +1,9 @@
 name = "littlepings"
-compatibility_date = "2024-09-23"
+compatibility_date = "2025-01-01"
 
-[env.production]
-name = "littlepings"
-
-[site]
-bucket = "./dist"
-
-# Cloudflare Pages build config (read by the dashboard)
+# Cloudflare Pages build settings (used by the dashboard & wrangler CLI)
 [build]
 command = "npm run build"
-cwd = "."
 
-[build.upload]
-format = "service-worker"
+[build.environment]
+NODE_VERSION = "20"
