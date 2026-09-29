@@ -1,6 +1,8 @@
 # 🎹 LittlePings
 
-A keyboard-smashing toy for all ages. Every key press spawns an animated letter bubble, plays a piano-like ping, and increments your smash counter. Switch between six colour themes without losing your count.
+**Live → [littlepings.pages.dev](https://littlepings.pages.dev/)**
+
+A keyboard-smashing toy for toddlers and kids. Every key press spawns an animated emoji bubble, plays a piano-like ping, and increments your smash counter. Switch between six colour themes without losing your count.
 
 ---
 
@@ -128,6 +130,37 @@ Audio code never propagates exceptions into the counter/state path. The smash co
 
 ### Counter Persistence
 `smashCount` lives in the reducer and is **never reset on theme change**. Only the explicit "reset" button triggers `RESET_COUNTER`.
+
+---
+
+## 🌐 Deployment
+
+Hosted on **Cloudflare Pages** — auto-deployed on every push to `main` via GitHub Actions.
+
+| Item                | Value                                          |
+|---------------------|------------------------------------------------|
+| Live URL            | `https://littlepings.pages.dev/`               |
+| GitHub repo         | `github.com/varanrajesh/littlepings`           |
+| CI/CD               | GitHub Actions → Cloudflare Pages              |
+| Build command       | `npm run build`                                |
+| Build output        | `dist/`                                        |
+| Node version        | 20 (pinned via `.nvmrc`)                       |
+
+### Deploy pipeline (automatic on push)
+```
+git push origin main
+  → lint (oxlint)
+  → test (72 Vitest tests)
+  → build (tsc + vite)
+  → deploy (wrangler pages deploy dist)
+  → live in ~45 seconds
+```
+
+### Required GitHub Secrets
+| Secret          | Purpose                           |
+|-----------------|-----------------------------------|
+| `CF_API_TOKEN`  | Cloudflare API token (Pages Edit) |
+| `CF_ACCOUNT_ID` | Cloudflare account ID             |
 
 ---
 

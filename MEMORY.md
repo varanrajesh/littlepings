@@ -7,14 +7,18 @@
 
 ## 🏷️ Project Identity
 
-| Field        | Value                                      |
-|--------------|--------------------------------------------|
-| Name         | **LittlePings**                            |
-| Root         | `/Users/rajesh-2755/LittlePings`           |
-| npm name     | `littlepings` (lowercase, npm convention)  |
-| Version      | `0.0.0` (pre-release)                      |
-| Entry point  | `index.html` → `src/main.tsx`              |
-| Dev URL      | `http://localhost:5175/`                   |
+| Field          | Value                                                        |
+|----------------|--------------------------------------------------------------|
+| Name           | **LittlePings**                                              |
+| Root           | `/Users/rajesh-2755/LittlePings`                             |
+| npm name       | `littlepings` (lowercase, npm convention)                    |
+| Version        | `0.0.0` (pre-release)                                        |
+| Entry point    | `index.html` → `src/main.tsx`                                |
+| Dev URL        | `http://localhost:5175/`                                     |
+| **Live URL**   | **`https://littlepings.pages.dev/`**                         |
+| GitHub repo    | `https://github.com/varanrajesh/littlepings`                 |
+| Hosting        | Cloudflare Pages (edge CDN, 300+ PoPs, free tier)            |
+| Deploy trigger | Every push to `main` → GitHub Actions CI → Cloudflare Pages  |
 
 ---
 
@@ -30,7 +34,7 @@
 | Audio         | Web Audio API (raw, no library)                     |
 | Confetti      | canvas-confetti                                     |
 | PWA           | vite-plugin-pwa + workbox-window (SW auto-update)   |
-| Testing       | Vitest 1 + Testing Library (React + user-event)     |
+| Testing       | Vitest 2 + Testing Library React 16 (React 19 compat) |
 | Linting       | oxlint                                              |
 | CI            | GitHub Actions (`.github/workflows/ci.yml`)         |
 | Path alias    | `@/` → `src/`                                       |
@@ -165,6 +169,41 @@ npm run test:watch  # watch mode
 
 ---
 
+## 🌐 Deployment
+
+### Cloudflare Pages
+| Field               | Value                                              |
+|---------------------|----------------------------------------------------|
+| Project name        | `littlepings`                                      |
+| Production URL      | `https://littlepings.pages.dev/`                   |
+| Production branch   | `main`                                             |
+| Build command       | `npm run build`                                    |
+| Build output dir    | `dist`                                             |
+| Node version        | `20` (pinned via `.nvmrc` + `.node-version`)       |
+| Deploy command      | Blank (GitHub Actions handles deploy)              |
+| wrangler.toml       | `pages_build_output_dir = "./dist"` — Pages config |
+
+### GitHub Actions CI (`.github/workflows/ci.yml`)
+On every push to `main`:
+1. `npm ci` — install deps
+2. `npm run lint` — oxlint
+3. `npm test` — 72 Vitest tests
+4. `npm run build` — `tsc -b && vite build`
+5. `npx wrangler@4 pages deploy dist --project-name=littlepings --branch=main`
+
+### Required GitHub Secrets
+| Secret             | Purpose                          |
+|--------------------|----------------------------------|
+| `CF_API_TOKEN`     | Cloudflare API token (Pages Edit)|
+| `CF_ACCOUNT_ID`    | Cloudflare account ID            |
+
+### Custom Domain (pending)
+To connect a custom domain (e.g. `littlepings.com`):
+- Cloudflare Dashboard → Workers & Pages → `littlepings` → Custom domains → Add domain
+- Cloudflare auto-provisions DNS + SSL (~60 seconds)
+
+---
+
 ## ⚠️ Known Issues / Open Tasks
 
 ### 🔴 Must Fix
@@ -174,11 +213,12 @@ _(none currently)_
 _(none — all debug `console.log` calls removed)_
 
 ### 🟢 Enhancement Ideas
-1. Mobile: TouchZone generates a random char on tap. Consider showing a virtual keyboard overlay for a richer mobile experience.
-2. `src/debug.ts` — extend to expose a runtime diagnostics panel (toggled by a keyboard shortcut).
-3. PWA icons: SVG icons work but PNG (192 × 512 px) recommended for full iOS/Android compatibility. Add a script to generate PNGs via `sharp`.
-4. Parent lock PIN: currently hardcoded to `1234`. Consider a settings screen to customise it.
-5. Attract screen: could show high-score / last session's milestone to entice kids back.
+1. **Custom domain** — connect `littlepings.com` via Cloudflare Pages → Custom domains.
+2. **PWA icons** — SVG icons work but PNG (192 × 512 px) recommended for full iOS/Android home-screen compatibility. Add a `sharp`-based generation script.
+3. **Parent lock PIN** — currently hardcoded to `1234`. Consider a settings screen to customise it.
+4. **Mobile keyboard overlay** — `TouchZone` generates a random char on tap. A virtual keyboard overlay would give a richer mobile experience.
+5. **Attract screen personalisation** — show last session's milestone/high-score to entice kids back.
+6. **Analytics** — Cloudflare Pages Analytics (free, privacy-first) to track visits and usage.
 
 ---
 
@@ -198,7 +238,8 @@ _(none — all debug `console.log` calls removed)_
 
 | Date       | Changes                                                                 |
 |------------|-------------------------------------------------------------------------|
-| 2025-07-10 | **Calmer theme palette.** All 6 themes redesigned with eye-friendly, classy colours instead of saturated/neon tones. Backgrounds use muted gradients (dusty rose, slate teal, sage green, warm charcoal, terracotta, pale steel). `bubbleColors` desaturated to muted berry/slate/moss/violet/sienna/steel tones. `accent` & `letterColor` updated to match. `bgPattern` overlay switched from `mixBlendMode: overlay @ 0.6` → `multiply @ 0.35` to prevent halo bleed. Bubble letter `textShadow` softened (removed wide 60px glow). 72 tests, all passing. |
+| 2026-09-29 | **🚀 Deployed to Cloudflare Pages.** Live at `https://littlepings.pages.dev/`. GitHub Actions CI pipeline: lint → 72 tests → build → `wrangler pages deploy`. Fixed peer dependency conflict (`@testing-library/react@15` → `@16`, `vitest@1` → `@2`, `vite-plugin-pwa@1.3.0` → `@0.21.2`). Added `.nvmrc`, `.node-version` (Node 20), `wrangler.toml` (`pages_build_output_dir`), `public/_redirects`, `public/_headers`. Pushed 94 objects to `github.com/varanrajesh/littlepings`. Cloudflare Pages project created via `wrangler pages project create`. Restore point `v1.2.0` tagged. |
+| 2026-09-29 | **Calmer theme palette.** All 6 themes redesigned with eye-friendly, classy colours instead of saturated/neon tones. Backgrounds use muted gradients (dusty rose, slate teal, sage green, warm charcoal, terracotta, pale steel). `bubbleColors` desaturated to muted berry/slate/moss/violet/sienna/steel tones. `accent` & `letterColor` updated to match. `bgPattern` overlay switched from `mixBlendMode: overlay @ 0.6` → `multiply @ 0.35` to prevent halo bleed. Bubble letter `textShadow` softened (removed wide 60px glow). 72 tests, all passing. |
 | 2025-07-10 | Project renamed from `LttlePings` → `LittlePings`. Fixed `index.html` `<title>` from `littlepings` → `LittlePings`. Created this `MEMORY.md`. |
 | 2025-07-10 | Removed debug `console.log` from `useKeyboard.ts` and `HUD.tsx`. Rewrote `useKeyboard.test.tsx` with real hook mount (`HookHarness`), covering all blocked keys, modifier combos, valid keys, arrow/space symbol maps, and debounce — 22 tests. Updated `README.md` with full LittlePings docs. All 34 tests passing. |
 | 2025-07-10 | Implemented 4 major features: (1) Confetti burst at milestones 10/50/100/500 (`useConfetti.ts` + `MilestoneBanner.tsx`). (2) Parent lock screen — 5× top-right corner taps within 1.5 s, PIN "1234" (`useParentLock.ts` + `LockScreen.tsx`). (3) Idle attract screen after 30 s inactivity (`useIdleAttract.ts` + `AttractScreen.tsx`). (4) PWA support — `manifest.json`, `vite-plugin-pwa` Workbox service worker, full `<head>` meta tags, SVG icons. Added 24 new tests (useConfetti × 10, useIdleAttract × 7, useParentLock × 7). Total: 58 tests, all passing. |
