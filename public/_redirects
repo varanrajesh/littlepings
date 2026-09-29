@@ -1,1 +1,6 @@
+# Static files must be served directly — list them before the SPA catch-all
+/sitemap.xml   /sitemap.xml   200
+/robots.txt    /robots.txt    200
+
+# SPA fallback — all other routes serve index.html
 /*    /index.html   200
