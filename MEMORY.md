@@ -215,12 +215,12 @@ _(none currently)_
 _(none — all debug `console.log` calls removed)_
 
 ### 🟢 Enhancement Ideas
-1. **Custom domain** — connect `littlepings.com` via Cloudflare Pages → Custom domains.
-2. **PWA icons** — SVG icons work but PNG (192 × 512 px) recommended for full iOS/Android home-screen compatibility. Add a `sharp`-based generation script.
-3. **Parent lock PIN** — currently hardcoded to `1234`. Consider a settings screen to customise it.
-4. **Mobile keyboard overlay** — `TouchZone` generates a random char on tap. A virtual keyboard overlay would give a richer mobile experience.
-5. **Attract screen personalisation** — show last session's milestone/high-score to entice kids back.
-6. **Analytics** — Cloudflare Pages Analytics (free, privacy-first) to track visits and usage.
+1. **Parent lock PIN** — currently hardcoded to `1234`. Consider a settings screen to customise it.
+2. **Mobile keyboard overlay** — `TouchZone` generates a random char on tap. A virtual keyboard overlay would give a richer mobile experience.
+3. **Attract screen personalisation** — show last session's milestone/high-score to entice kids back.
+4. **Analytics** — Cloudflare Web Analytics (free, privacy-first, no cookies) to track visits and usage.
+5. **Blog / content page** — keyword-rich static content (e.g. "safe screen time for toddlers") to feed Google long-tail traffic.
+6. **Customisable parent lock PIN** — settings screen to replace hardcoded `1234`.
 
 ---
 
@@ -240,6 +240,7 @@ _(none — all debug `console.log` calls removed)_
 
 | Date       | Changes                                                                 |
 |------------|-------------------------------------------------------------------------|
+| 2025-07-11 | **🔍 Full SEO implementation.** Technical SEO: keyword-rich `<title>`, expanded `<meta description>`, Open Graph tags, Twitter Card, JSON-LD `WebApplication` schema, FAQ JSON-LD (5 Q&As — eligible for Google Rich Results), `<meta name="application-name">`, `<meta name="rating" content="safe for kids">`, `<link rel="alternate" hreflang="en">`, `<noscript>` fallback content for crawlers. `robots.txt` + `sitemap.xml` created and fixed to serve correct MIME types via `public/_redirects` + `public/_headers` (was being intercepted by SPA catch-all). `og-image.png` generated (1200×630px) via `scripts/generate-og.mjs` using `@napi-rs/canvas`. PNG icons (192×512px) generated via `scripts/generate-icons.mjs`. `manifest.json` updated: `description`, `lang`, `dir`, `id`, `screenshots`. PWA service worker `navigateFallbackDenylist` expanded to exclude all static assets. Privacy policy page live at `littlepings.com/privacy`. Sitemap submitted to Google Search Console + indexing requested. All static assets verified: `robots.txt` → `text/plain` ✅, `sitemap.xml` → `application/xml` ✅, `og-image.png` → `image/png` ✅, `icon-192.png` + `icon-512.png` → `image/png` ✅, `/privacy` → `200 text/html` ✅. Sitemap reprocessed by Google Search Console — no errors. |
 | 2026-09-29 | **🌐 Custom domain live.** `https://littlepings.com` — DNS + SSL provisioned via Cloudflare. `CF_API_TOKEN` + `CF_ACCOUNT_ID` GitHub Secrets set. Every `git push origin main` now auto-deploys: tests → build → `wrangler pages deploy dist` → live in ~45 s. `MEMORY.md` + `README.md` updated to reflect `littlepings.com` as canonical URL. Restore point `v1.3.0` tagged. |
 | 2026-09-29 | **🚀 Deployed to Cloudflare Pages.** Live at `https://littlepings.pages.dev/`. GitHub Actions CI pipeline: lint → 72 tests → build → `wrangler pages deploy`. Fixed peer dependency conflict (`@testing-library/react@15` → `@16`, `vitest@1` → `@2`, `vite-plugin-pwa@1.3.0` → `@0.21.2`). Added `.nvmrc`, `.node-version` (Node 20), `wrangler.toml` (`pages_build_output_dir`), `public/_redirects`, `public/_headers`. Pushed 94 objects to `github.com/varanrajesh/littlepings`. Cloudflare Pages project created via `wrangler pages project create`. Restore point `v1.2.0` tagged. |
 | 2026-09-29 | **Calmer theme palette.** All 6 themes redesigned with eye-friendly, classy colours instead of saturated/neon tones. Backgrounds use muted gradients (dusty rose, slate teal, sage green, warm charcoal, terracotta, pale steel). `bubbleColors` desaturated to muted berry/slate/moss/violet/sienna/steel tones. `accent` & `letterColor` updated to match. `bgPattern` overlay switched from `mixBlendMode: overlay @ 0.6` → `multiply @ 0.35` to prevent halo bleed. Bubble letter `textShadow` softened (removed wide 60px glow). 72 tests, all passing. |
