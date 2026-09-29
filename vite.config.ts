@@ -6,6 +6,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Root-relative — works for both Cloudflare Pages custom domain and *.pages.dev
+  base: '/',
   plugins: [
     react(),
     VitePWA({
