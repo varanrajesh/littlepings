@@ -20,7 +20,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
         // Stale-while-revalidate for navigation (offline-first)
         navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/\/api\//, /\/sitemap\.xml$/, /\/robots\.txt$/],
+        navigateFallbackDenylist: [/\/api\//, /\/sitemap\.xml$/, /\/robots\.txt$/, /\/og-image\.png$/, /\/icons\/icon-\d+\.png$/, /\/manifest\.json$/],
         runtimeCaching: [
           {
             // Google Fonts — cache-first

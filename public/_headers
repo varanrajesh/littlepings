@@ -8,7 +8,12 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/icons/*
+/icons/*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/icons/*.svg
+  Content-Type: image/svg+xml
   Cache-Control: public, max-age=31536000, immutable
 
 /manifest.json

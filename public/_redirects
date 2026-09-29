@@ -1,7 +1,12 @@
 # Static files must be served directly — list them before the SPA catch-all
-/sitemap.xml   /sitemap.xml   200
-/robots.txt    /robots.txt    200
-/og-image.png  /og-image.png  200
+/sitemap.xml          /sitemap.xml          200
+/robots.txt           /robots.txt           200
+/og-image.png         /og-image.png         200
+/icons/icon-192.png   /icons/icon-192.png   200
+/icons/icon-512.png   /icons/icon-512.png   200
+/manifest.json        /manifest.json        200
+/privacy              /privacy.html         200
+/privacy.html         /privacy.html         200
 
 # SPA fallback — all other routes serve index.html
 /*    /index.html   200

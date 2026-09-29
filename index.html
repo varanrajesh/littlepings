@@ -15,8 +15,11 @@
     <meta name="description" content="LittlePings is a free, safe keyboard-smashing toy for babies and toddlers. Every key press creates colourful emoji bubbles, playful piano pings, and animations. No ads, no accounts — just fun!" />
     <meta name="keywords" content="toddler keyboard app, baby keyboard smashing, kids typing toy, free toddler app, keyboard fun for kids, toddler screen time, baby computer game, littlepings" />
     <link rel="canonical" href="https://littlepings.com/" />
+    <link rel="alternate" hreflang="en" href="https://littlepings.com/" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="LittlePings" />
+    <meta name="application-name" content="LittlePings" />
+    <meta name="rating" content="safe for kids" />
 
     <!-- Open Graph (Facebook, WhatsApp, iMessage previews) -->
     <meta property="og:type" content="website" />
@@ -34,43 +37,100 @@
     <meta name="twitter:description" content="Hand your keyboard to your toddler! Every key press makes colourful emoji bubbles and playful piano sounds. Free, safe, and zero ads." />
     <meta name="twitter:image" content="https://littlepings.com/og-image.png" />
 
-    <!-- Structured Data: WebApplication (rich results eligibility) -->
+    <!-- Structured Data: WebApplication + FAQPage (rich results eligibility) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "LittlePings",
-      "url": "https://littlepings.com",
-      "description": "A free, safe keyboard-smashing toy for toddlers and babies. Press any key to create colourful emoji bubbles, playful piano pings, and animations.",
-      "applicationCategory": "GameApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "LittlePings",
+        "url": "https://littlepings.com",
+        "description": "A free, safe keyboard-smashing toy for toddlers and babies. Press any key to create colourful emoji bubbles, playful piano pings, and animations.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedMinAge": 0,
+          "suggestedMaxAge": 5
+        },
+        "inLanguage": "en",
+        "screenshot": "https://littlepings.com/og-image.png",
+        "featureList": [
+          "Colourful emoji bubbles on every key press",
+          "Piano-style sound effects",
+          "6 visual themes: Candy, Ocean, Jungle, Space, Sunset, Arctic",
+          "Parent lock with PIN",
+          "No ads, no accounts, completely free"
+        ]
       },
-      "audience": {
-        "@type": "PeopleAudience",
-        "suggestedMinAge": 0,
-        "suggestedMaxAge": 5
-      },
-      "inLanguage": "en",
-      "screenshot": "https://littlepings.com/og-image.png",
-      "featureList": [
-        "Colourful emoji bubbles on every key press",
-        "Piano-style sound effects",
-        "6 visual themes: Candy, Ocean, Jungle, Space, Sunset, Arctic",
-        "Parent lock with PIN",
-        "No ads, no accounts, completely free"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is LittlePings free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely free. No ads, no accounts, and no in-app purchases — ever."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is LittlePings safe for babies and toddlers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. There are no links, no ads, no external content, and no data collected. It is a closed keyboard-smashing toy designed specifically for babies and toddlers aged 0–5."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does LittlePings work on mobile and tablets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. LittlePings works on any device with a browser — desktop, tablet, or mobile. Tap anywhere on a touchscreen to create bubbles."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does LittlePings work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. LittlePings is a Progressive Web App (PWA) and works fully offline after the first visit. You can also install it to your home screen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What themes does LittlePings have?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LittlePings has 6 colour themes: Candy, Ocean, Jungle, Space, Sunset, and Arctic — each with unique bubble colours and backgrounds."
+            }
+          }
+        ]
+      }
+    ]
     </script>
 
     <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="font-family:sans-serif;text-align:center;padding:60px 20px;color:#3a1f60">
+        <h1>LittlePings 🎹</h1>
+        <p>A free, safe keyboard-smashing toy for toddlers and babies.</p>
+        <p>Press any key to create colourful emoji bubbles and playful piano sounds.</p>
+        <p>6 themes &bull; No ads &bull; No accounts &bull; Works offline</p>
+        <p><a href="https://littlepings.com">littlepings.com</a></p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
