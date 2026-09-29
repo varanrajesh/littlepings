@@ -55,8 +55,8 @@ export default function SceneryLayer() {
         className="absolute inset-0"
         style={{
           background: theme.bgPattern,
-          mixBlendMode: "overlay",
-          opacity: 0.6,
+          mixBlendMode: "multiply",
+          opacity: 0.35,
         }}
       />
 

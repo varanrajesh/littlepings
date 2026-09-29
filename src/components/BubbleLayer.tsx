@@ -47,44 +47,51 @@ function BubbleItem({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "0.15em",
+        gap: "0.1em",
         lineHeight: 1,
         fontFamily: "'Nunito', 'Fredoka One', 'Comic Sans MS', sans-serif",
         fontWeight: 900,
       }}
     >
-      <span
-        style={{
-          fontSize: `${bubble.fontSize}rem`,
-          color: bubble.color,
-          textShadow: `
-            0 4px 24px ${bubble.color}99,
-            0 0 60px ${bubble.color}55,
-            0 2px 0 rgba(0,0,0,0.15)
-          `,
-          display: "block",
-        }}
-      >
-        {bubble.char}
-      </span>
-
+      {/* ── Emoji — rendered FIRST (top), bigger than the letter ── */}
       {bubble.emoji && (
         <motion.span
-          initial={{ scale: 0, rotate: -20 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 600, damping: 18, delay: 0.05 }}
+          // Cracker-burst: pops out from centre, wobbles, then settles
+          initial={{ scale: 0, rotate: -30, y: 10 }}
+          animate={{
+            scale:  [0, 1.45, 0.95, 1.15, 1.0],
+            rotate: [-30, 12, -8, 4, 0],
+            y:      [10, -4, 0],
+          }}
+          transition={{
+            duration: 0.55,
+            ease: "easeOut",
+            times: [0, 0.35, 0.55, 0.75, 1],
+          }}
           style={{
-            /* 0.82× gives the emoji nearly the same visual weight as the
-               letter above it — emojis render smaller than text glyphs at
-               the same font-size, so we compensate here. */
-            fontSize: `${bubble.fontSize * 0.82}rem`,
+            // 1.35× the letter size — emoji is the hero, letter is the label
+            fontSize: `${bubble.fontSize * 1.35}rem`,
             display: "block",
-            filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.30))",
+            filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.28))",
+            lineHeight: 1,
           }}
         >
           {bubble.emoji}
         </motion.span>
       )}
+
+      {/* ── Letter — smaller, sits below the emoji ── */}
+      <span
+        style={{
+          fontSize: `${bubble.fontSize}rem`,
+          color: bubble.color,
+          textShadow: `0 2px 8px ${bubble.color}44, 0 1px 0 rgba(0,0,0,0.10)`,
+          display: "block",
+          lineHeight: 1,
+        }}
+      >
+        {bubble.char}
+      </span>
     </motion.div>
   );
 }

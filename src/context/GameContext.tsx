@@ -67,12 +67,11 @@ function makeBubble(char: string, colors: string[], emojis: string[]): Bubble {
     x: 5 + Math.random() * 80,
     y: 5 + Math.random() * 75,
     color: colors[Math.floor(Math.random() * colors.length)],
-    fontSize: 5 + Math.random() * 8,
+    // Smaller letter range: 2.5 – 5 rem (was 5 – 13 rem)
+    fontSize: 2.5 + Math.random() * 2.5,
     rotation: -20 + Math.random() * 40,
-    emoji:
-      Math.random() < 0.4
-        ? emojis[Math.floor(Math.random() * emojis.length)]
-        : undefined,
+    // Every bubble always gets an emoji — no random skip
+    emoji: emojis[Math.floor(Math.random() * emojis.length)],
   };
 }
 
