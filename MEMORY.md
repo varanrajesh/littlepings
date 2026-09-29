@@ -15,9 +15,11 @@
 | Version        | `0.0.0` (pre-release)                                        |
 | Entry point    | `index.html` → `src/main.tsx`                                |
 | Dev URL        | `http://localhost:5175/`                                     |
-| **Live URL**   | **`https://littlepings.pages.dev/`**                         |
+| **Live URL**   | **`https://littlepings.com/`**                               |
+| Pages URL      | `https://littlepings.pages.dev/` (Cloudflare alias)          |
 | GitHub repo    | `https://github.com/varanrajesh/littlepings`                 |
 | Hosting        | Cloudflare Pages (edge CDN, 300+ PoPs, free tier)            |
+| Custom domain  | `littlepings.com` — DNS + SSL managed by Cloudflare          |
 | Deploy trigger | Every push to `main` → GitHub Actions CI → Cloudflare Pages  |
 
 ---
@@ -238,6 +240,7 @@ _(none — all debug `console.log` calls removed)_
 
 | Date       | Changes                                                                 |
 |------------|-------------------------------------------------------------------------|
+| 2026-09-29 | **🌐 Custom domain live.** `https://littlepings.com` — DNS + SSL provisioned via Cloudflare. `CF_API_TOKEN` + `CF_ACCOUNT_ID` GitHub Secrets set. Every `git push origin main` now auto-deploys: tests → build → `wrangler pages deploy dist` → live in ~45 s. `MEMORY.md` + `README.md` updated to reflect `littlepings.com` as canonical URL. Restore point `v1.3.0` tagged. |
 | 2026-09-29 | **🚀 Deployed to Cloudflare Pages.** Live at `https://littlepings.pages.dev/`. GitHub Actions CI pipeline: lint → 72 tests → build → `wrangler pages deploy`. Fixed peer dependency conflict (`@testing-library/react@15` → `@16`, `vitest@1` → `@2`, `vite-plugin-pwa@1.3.0` → `@0.21.2`). Added `.nvmrc`, `.node-version` (Node 20), `wrangler.toml` (`pages_build_output_dir`), `public/_redirects`, `public/_headers`. Pushed 94 objects to `github.com/varanrajesh/littlepings`. Cloudflare Pages project created via `wrangler pages project create`. Restore point `v1.2.0` tagged. |
 | 2026-09-29 | **Calmer theme palette.** All 6 themes redesigned with eye-friendly, classy colours instead of saturated/neon tones. Backgrounds use muted gradients (dusty rose, slate teal, sage green, warm charcoal, terracotta, pale steel). `bubbleColors` desaturated to muted berry/slate/moss/violet/sienna/steel tones. `accent` & `letterColor` updated to match. `bgPattern` overlay switched from `mixBlendMode: overlay @ 0.6` → `multiply @ 0.35` to prevent halo bleed. Bubble letter `textShadow` softened (removed wide 60px glow). 72 tests, all passing. |
 | 2025-07-10 | Project renamed from `LttlePings` → `LittlePings`. Fixed `index.html` `<title>` from `littlepings` → `LittlePings`. Created this `MEMORY.md`. |

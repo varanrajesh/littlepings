@@ -1,6 +1,6 @@
 # 🎹 LittlePings
 
-**Live → [littlepings.pages.dev](https://littlepings.pages.dev/)**
+**Live → [littlepings.com](https://littlepings.com/)**
 
 A keyboard-smashing toy for toddlers and kids. Every key press spawns an animated emoji bubble, plays a piano-like ping, and increments your smash counter. Switch between six colour themes without losing your count.
 
