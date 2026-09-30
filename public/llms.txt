@@ -1,0 +1,49 @@
+# LittlePings
+
+> LittlePings is a free, safe, and fun keyboard-smashing toy for babies and toddlers aged 0–5. Every key press creates colourful animated emoji bubbles and plays a delightful piano-like ping sound. No ads, no accounts, no data collected — just pure toddler joy.
+
+## What is LittlePings?
+
+LittlePings turns keyboard smashing into a safe, screen-time-friendly activity for young children. It runs entirely in the browser as a Progressive Web App (PWA) — no installation required. Toddlers can smash any key and see colourful bubbles pop up on screen with satisfying sounds.
+
+## Features
+
+- Colourful animated emoji bubbles on every key press
+- Playful piano-like ping sounds using the Web Audio API
+- 6 beautiful colour themes: Candy, Ocean, Jungle, Space, Sunset, Arctic
+- Key smash counter with milestone confetti at 100, 500, 1000, and 2000 smashes
+- Parent lock — tap any corner 5 times to lock the app, PIN to unlock
+- Idle attract screen and session summary screen
+- Works on desktop, tablet, and mobile (tap to create bubbles on touchscreen)
+- Progressive Web App — install to home screen, works fully offline
+- 100% free, zero ads, zero data collected, zero accounts required
+- Safe for kids — no external links, no tracking, no cookies
+
+## Who is it for?
+
+LittlePings is designed for:
+- Babies and toddlers aged 0–5 years
+- Parents who want a safe, ad-free digital toy
+- Caregivers and educators looking for a stimulating sensory activity
+
+## Technology
+
+- React 19 + TypeScript
+- Vite 5 + vite-plugin-pwa
+- Tailwind CSS + Framer Motion
+- Web Audio API (no external audio files)
+- Cloudflare Pages (CDN, SSL, global edge)
+
+## Pages
+
+- [Home](https://littlepings.com/)
+- [Privacy Policy](https://littlepings.com/privacy/)
+- [Sitemap](https://littlepings.com/sitemap.xml)
+
+## Policies
+
+- [Privacy Policy](https://littlepings.com/privacy/) — LittlePings collects zero user data. No cookies, no tracking, no analytics on user behaviour. COPPA compliant.
+
+## Contact
+
+For questions or feedback, visit [littlepings.com](https://littlepings.com/).

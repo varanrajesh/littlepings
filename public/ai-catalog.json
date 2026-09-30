@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ai-catalog.org/schema/v1/manifest.json",
+  "schemaVersion": "1.0",
+  "name": "LittlePings",
+  "description": "A free, safe keyboard-smashing toy for babies and toddlers aged 0–5. Every key press creates colourful animated emoji bubbles and playful piano sounds. No ads, no accounts, no data collected.",
+  "url": "https://littlepings.com/",
+  "logo": "https://littlepings.com/icons/icon-512.png",
+  "category": "education",
+  "tags": [
+    "toddler",
+    "kids",
+    "keyboard",
+    "toy",
+    "baby",
+    "free",
+    "safe",
+    "pwa",
+    "no-ads",
+    "educational"
+  ],
+  "audience": {
+    "minAge": 0,
+    "maxAge": 5,
+    "type": "children"
+  },
+  "pricing": {
+    "model": "free",
+    "price": 0,
+    "currency": "USD"
+  },
+  "privacy": {
+    "dataCollection": false,
+    "cookies": false,
+    "tracking": false,
+    "policyUrl": "https://littlepings.com/privacy/"
+  },
+  "platform": {
+    "type": "web",
+    "pwa": true,
+    "offline": true,
+    "operatingSystems": ["any"]
+  },
+  "contact": {
+    "url": "https://littlepings.com/"
+  },
+  "links": {
+    "home": "https://littlepings.com/",
+    "privacy": "https://littlepings.com/privacy/",
+    "sitemap": "https://littlepings.com/sitemap.xml",
+    "llmsTxt": "https://littlepings.com/llms.txt",
+    "manifest": "https://littlepings.com/manifest.json"
+  }
+}

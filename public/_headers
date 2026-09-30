@@ -41,3 +41,11 @@
 /og-image.png
   Content-Type: image/png
   Cache-Control: public, max-age=31536000, immutable
+
+/llms.txt
+  Content-Type: text/plain; charset=UTF-8
+  Cache-Control: public, max-age=86400
+
+/ai-catalog.json
+  Content-Type: application/json; charset=UTF-8
+  Cache-Control: public, max-age=86400
