@@ -49,3 +49,13 @@
 /ai-catalog.json
   Content-Type: application/json; charset=UTF-8
   Cache-Control: public, max-age=86400
+
+/.well-known/ard.json
+  Content-Type: application/json; charset=UTF-8
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+
+/.well-known/ai-catalog.json
+  Content-Type: application/json; charset=UTF-8
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
