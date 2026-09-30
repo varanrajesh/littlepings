@@ -8,8 +8,8 @@
 /privacy/index.html   /privacy/index.html   200
 /llms.txt                    /llms.txt                    200
 /ai-catalog.json             /ai-catalog.json             200
-/.well-known/ard.json        /.well-known/ard.json        200
-/.well-known/ai-catalog.json /.well-known/ai-catalog.json 200
+# /.well-known/* is served by Pages Functions (functions/.well-known/*.ts)
+# because Cloudflare Pages does not serve dot-directory static assets reliably.
 
 # SPA fallback — all other routes serve index.html
 /*    /index.html   200

@@ -38,15 +38,18 @@ jobs:
 
       - name: Verify ARD manifests exist in build output
         run: |
-          test -f dist/.well-known/ard.json || { echo "::error::dist/.well-known/ard.json missing from build"; exit 1; }
-          test -f dist/ai-catalog.json      || { echo "::error::dist/ai-catalog.json missing from build"; exit 1; }
-          echo "✅ ARD manifests present in dist/"
+          test -f dist/ai-catalog.json            || { echo "::error::dist/ai-catalog.json missing from build"; exit 1; }
+          test -f functions/.well-known/ard.json.ts || { echo "::error::functions/.well-known/ard.json.ts missing (serves /.well-known/ard.json)"; exit 1; }
+          echo "✅ ARD manifest (static) + /.well-known Function present"
 
-      - name: Upload dist artifact
+      - name: Upload build artifact (dist + functions)
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist/
+          # include functions/ so Cloudflare Pages Functions deploy alongside assets
+          path: |
+            dist/
+            functions/
           retention-days: 1
 
   # ─── 2. Deploy to Cloudflare Pages (main branch only) ─────────────────────
@@ -61,13 +64,15 @@ jobs:
       deployments: write
 
     steps:
-      - name: Download dist artifact
+      - name: Download build artifact (dist + functions)
         uses: actions/download-artifact@v4
         with:
           name: dist
-          path: dist/
+          # restores dist/ and functions/ into the working directory
 
       - name: Deploy to Cloudflare Pages
+        # Wrangler auto-detects a sibling functions/ directory and compiles it
+        # into Pages Functions, so /.well-known/ard.json is served by code.
         run: npx wrangler@4 pages deploy dist --project-name=littlepings --branch=main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
