@@ -42,14 +42,11 @@ jobs:
           test -f functions/.well-known/ard.json.ts || { echo "::error::functions/.well-known/ard.json.ts missing (serves /.well-known/ard.json)"; exit 1; }
           echo "✅ ARD manifest (static) + /.well-known Function present"
 
-      - name: Upload build artifact (dist + functions)
+      - name: Upload build artifact (dist)
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          # include functions/ so Cloudflare Pages Functions deploy alongside assets
-          path: |
-            dist/
-            functions/
+          path: dist/
           retention-days: 1
 
   # ─── 2. Deploy to Cloudflare Pages (main branch only) ─────────────────────
@@ -64,15 +61,19 @@ jobs:
       deployments: write
 
     steps:
-      - name: Download build artifact (dist + functions)
+      - name: Checkout (for functions/ directory)
+        uses: actions/checkout@v4
+
+      - name: Download build artifact (dist)
         uses: actions/download-artifact@v4
         with:
           name: dist
-          # restores dist/ and functions/ into the working directory
+          path: dist/
 
       - name: Deploy to Cloudflare Pages
-        # Wrangler auto-detects a sibling functions/ directory and compiles it
-        # into Pages Functions, so /.well-known/ard.json is served by code.
+        # Run from repo root so Wrangler picks up the sibling functions/ directory
+        # and compiles it into Pages Functions. This is what serves
+        # /.well-known/ard.json as raw JSON (dot-dirs are not served as static assets).
         run: npx wrangler@4 pages deploy dist --project-name=littlepings --branch=main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
