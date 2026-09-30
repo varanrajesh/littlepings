@@ -5,6 +5,16 @@
 
 ---
 
+## 🤖 Agentic Browsing SEO (completed)
+| File | Status | Purpose |
+|---|---|---|
+| `public/llms.txt` | ✅ Live — `text/plain` | Tells LLMs (ChatGPT, Perplexity, Gemini) how to read the site |
+| `public/ai-catalog.json` | ✅ Live — `application/json` | ARD manifest for AI agent registries |
+| `#crawler-content` div | ✅ `index.html` | Visually hidden semantic HTML block for bots |
+| Agentic Browsing score | 2/4 → **4/4** expected after PageSpeed re-run | — |
+
+---
+
 ## 🏷️ Project Identity
 
 | Field          | Value                                                        |
