@@ -7,11 +7,11 @@
   },
   "entries": [
     {
-      "identifier": "urn:air:littlepings:app:keyboard-toy",
+      "identifier": "urn:air:littlepings.com:app:keyboard-toy",
       "displayName": "LittlePings – Keyboard Toy for Toddlers",
-      "type": "application/ai-catalog+json",
+      "type": "text/html",
       "url": "https://littlepings.com/",
-      "description": "A free, safe, browser-based keyboard smashing toy for babies and toddlers aged 0–5. Every key press creates colourful animated emoji bubbles and playful piano sounds. No ads, no accounts, no data collected.",
+      "description": "A free, safe, browser-based keyboard smashing toy for babies and toddlers aged 0-5. Every key press creates colourful animated emoji bubbles and playful piano sounds. No ads, no accounts, no data collected.",
       "version": "1.0.0",
       "updatedAt": "2025-07-10T00:00:00Z",
       "tags": ["toddler", "kids", "keyboard", "toy", "baby", "free", "safe", "pwa", "no-ads", "educational"],

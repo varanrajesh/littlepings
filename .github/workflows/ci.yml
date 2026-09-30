@@ -30,8 +30,17 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Validate ARD manifests
+        run: npm run validate:ard
+
       - name: Production build
         run: npm run build
+
+      - name: Verify ARD manifests exist in build output
+        run: |
+          test -f dist/.well-known/ard.json || { echo "::error::dist/.well-known/ard.json missing from build"; exit 1; }
+          test -f dist/ai-catalog.json      || { echo "::error::dist/ai-catalog.json missing from build"; exit 1; }
+          echo "✅ ARD manifests present in dist/"
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
